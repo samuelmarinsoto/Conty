@@ -39,27 +39,35 @@ wine_pkgs="wine-staging winetricks-git wine-nine wineasio \
 	gtk3 lib32-gtk3 vulkan-icd-loader lib32-vulkan-icd-loader \
 	sdl2 lib32-sdl2 vkd3d lib32-vkd3d libgphoto2 \
 	openssl-1.1 lib32-openssl-1.1 libnm lib32-libnm \
-	cabextract wget gamemode lib32-gamemode mangohud lib32-mangohud"
+	cabextract wget gamemode lib32-gamemode mangohud lib32-mangohud \
+	bottles playonlinux"
 
 devel_pkgs="base-devel git meson mingw-w64-gcc cmake"
 
-gaming_pkgs="lutris python-protobuf steam steam-native-runtime steamtinkerlaunch \
-	minigalaxy gamehub legendary prismlauncher bottles playonlinux obs-studio \
-	retroarch retroarch-assets-ozone libretro-beetle-psx-hw sunshine \
+gaming_pkgs_modern="lutris python-protobuf steam steam-native-runtime steamtinkerlaunch \
+	minigalaxy gamehub legendary prismlauncher"
+
+gaming_pkgs_modern_lite="lutris python-protobuf steam steam-native-runtime legendary"
+
+gaming_pkgs_retro="retroarch retroarch-assets-ozone libretro-beetle-psx-hw sunshine \
 	libretro-blastem libretro-bsnes libretro-dolphin duckstation \
 	libretro-gambatte libretro-melonds libretro-mgba libretro-nestopia \
 	libretro-parallel-n64 libretro-pcsx2 libretro-picodrive libretro-ppsspp \
 	libretro-retrodream libretro-yabause pcsx2-avx-git"
+	
+gaming_pkgs="${gaming_pkgs_modern} ${gaming_pkgs_retro}"
 
-extra_pkgs="nano ttf-dejavu ttf-liberation firefox mpv geany pcmanfm \
+extra_pkgs="nano firefox mpv geany pcmanfm \
 	htop qbittorrent speedcrunch gpicview file-roller openbox lxterminal \
-	yt-dlp minizip nautilus genymotion jre17-openjdk"
+	yt-dlp minizip nautilus genymotion jre17-openjdk obs-studio"
+
+font_pkgs="ttf-dejavu ttf-liberation"
 
 # Packages to install
 # You can add packages that you want and remove packages that you don't need
 # Apart from packages from the official Arch repos, you can also specify
 # packages from the Chaotic-AUR repo
-export packagelist="${audio_pkgs} ${core_pkgs} ${video_pkgs} ${wine_pkgs} ${devel_pkgs} ${gaming_pkgs} ${extra_pkgs}"
+export packagelist="${audio_pkgs} ${core_pkgs} ${video_pkgs} ${wine_pkgs} ${gaming_pkgs_modern_lite} ${font_pkgs}"
 
 # If you want to install AUR packages, specify them in this variable
 export aur_packagelist="faugus-launcher-git"
@@ -72,12 +80,12 @@ export aur_packagelist="faugus-launcher-git"
 # Arch Linux repos will be replaced with their optimized versions from ALHP
 #
 # Set this variable to true, if you want to enable this repository
-enable_alhp_repo="false"
+enable_alhp_repo="true"
 
 # Feature levels for ALHP. Available feature levels are 2 and 3
 # For level 2 you need a CPU with SSE4.2 instructions
 # For level 3 you need a CPU with AVX2 instructions
-alhp_feature_level="2"
+alhp_feature_level="3"
 
 ########################################################################
 
