@@ -1,3 +1,11 @@
 root.x86_64
 utils/
 pkglist.x86_64.txt
+chaotic-keyring.pkg.tar.zst
+chaotic-mirrorlist.pkg.tar.zst
+conty.sh
+image
+locale.gen
+mirrorlist
+utils.tar
+utils.tar.gz.old
