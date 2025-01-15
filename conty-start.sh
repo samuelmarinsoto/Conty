@@ -33,7 +33,7 @@ script_version="1.27"
 # size to 0
 init_size=50000
 bash_size=1752808
-script_size=42559
+script_size=43164
 busybox_size=1181592
 utils_size=4393102
 
