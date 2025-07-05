@@ -18,11 +18,11 @@ build_dwarfs="${build_dwarfs:-false}"
 squashfuse_version="0.5.2"
 bwrap_version="0.11.0"
 lz4_version="1.10.0"
-zstd_version="1.5.6"
+zstd_version="1.5.7"
 squashfs_tools_version="4.6.1"
 unionfs_fuse_version="3.3"
 busybox_version="1.36.1"
-bash_version="5.2.32"
+bash_version="5.2.37"
 
 export CC=clang
 export CXX=clang++
@@ -86,10 +86,10 @@ make CC=musl-gcc -j"$(nproc)"
 cd ../bash-${bash_version}
 curl -#Lo bash.patch "https://raw.githubusercontent.com/robxu9/bash-static/master/custom/bash-musl-strtoimax-debian-1023053.patch"
 patch -Np1 < ./bash.patch
-CFLAGS="${CFLAGS} -Wno-error=implicit-function-declaration -static" CC=musl-gcc ./configure --without-bash-malloc
+CFLAGS="${CFLAGS} -std=gnu17 -Wno-error=implicit-function-declaration -static" CC=musl-gcc ./configure --without-bash-malloc
 autoconf -f
-CFLAGS="${CFLAGS} -Wno-error=implicit-function-declaration -static" CC=musl-gcc ./configure --without-bash-malloc
-CFLAGS="${CFLAGS} -Wno-error=implicit-function-declaration -static" CC=musl-gcc make -j"$(nproc)"
+CFLAGS="${CFLAGS} -std=gnu17 -Wno-error=implicit-function-declaration -static" CC=musl-gcc ./configure --without-bash-malloc
+CFLAGS="${CFLAGS} -std=gnu17 -Wno-error=implicit-function-declaration -static" CC=musl-gcc make -j"$(nproc)"
 
 if [ "${build_dwarfs}" != "true" ]; then
 	cd ../squashfuse-"${squashfuse_version}" || exit 1
